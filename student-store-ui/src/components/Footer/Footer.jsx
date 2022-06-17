@@ -4,7 +4,7 @@ import "./Footer.css"
 export default function Footer() {
   return (
     <div className="footer">
-      <p>Footer</p>
+      <p>Footer Placeholder</p>
     </div>
   )
 }

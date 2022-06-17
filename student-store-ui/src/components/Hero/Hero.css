@@ -1,0 +1,15 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    background-color: #00c385;
+    width: 50vw;
+    font-size: larger;
+}
+.intro {
+    width: 30vw;
+}
+.hero-img {
+    width: 150px;
+}

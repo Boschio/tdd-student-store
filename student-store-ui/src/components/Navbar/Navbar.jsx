@@ -8,8 +8,18 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="content">
         <Logo />
-        <div className="socials"></div>
-        <ul className="links"></ul>
+        <div className="socials">
+          Socials PlaceHolder
+        </div>
+        <div className="nav-links">
+          <ul className="links">
+            <a href="/" className="list-link">Home</a>
+            <a href="/" className="list-link">About Us</a>
+            <a href="/" className="list-link">Contact Us</a>
+            <a href="/" className="list-link">Buy Now</a>
+          </ul>
+        </div>
+
       </div>
     </nav>
   )

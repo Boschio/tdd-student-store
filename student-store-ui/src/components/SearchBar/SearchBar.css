@@ -1,0 +1,23 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-input {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    width: 500px;
+    height: 30px;
+}
+
+.category {
+    border: none;
+    background-color: white;
+    font-size: larger;
+    border-color: aqua;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-style: solid;
+}

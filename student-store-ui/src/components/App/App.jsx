@@ -6,13 +6,13 @@ import "./App.css"
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import Hero from "../Hero/Hero"
 import ProductGrid from "../ProductGrid/ProductGrid"
-import Footer from "../Footer/Footer"
 import { useState, useEffect } from "react"
 import axios from "axios";
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
 import ProductCard from "../ProductCard/ProductCard"
 import ProductView from "../ProductView/ProductView"
+
 
 export default function App() {
   const [test, setTest] = useState("")
@@ -22,6 +22,7 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(false) // Boolean value for if Sidebar is open or closed
   const [shoppingCart, setShoppingCart] = useState([]) // state for active user's shopping cart items and quantity of each
   const [checkoutForm, setCheckoutForm] = useState([]) // user's info sent to API when checking out
+  const [searchInput, setSearchInput] = useState("")
 
   function handleOnToggle () {
     if (isOpen) {
@@ -32,8 +33,16 @@ export default function App() {
   }
 
   function handleAddItemToCart (productId) {
-    //FIXME
-    
+    //FIXME keeps creating infinite loop
+    if (shoppingCart.includes(productId)) {
+      shoppingCart[i].quantity += 1
+    } else {
+      const newCartItem = {
+        id: productId,
+        quantity: 1,        
+      }
+      setShoppingCart(current => [...current, newCartItem])
+    }
   }
 
   function handleRemoveItemFromCart (productId) {
@@ -54,7 +63,7 @@ export default function App() {
       try {
         const response = await axios.get(`https://codepath-store-api.herokuapp.com/store?test=${test}`)
         const products = response.data.products
-        // console.log(products)
+        console.log(products)
         setProducts(products)
       } catch(error) {
         setError("Unable to retrieve data")
@@ -76,24 +85,19 @@ export default function App() {
           <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
           <Routes>
           
-            <Route path = "/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />} >
-              <Route path="" element={<Hero />}/>
-              <Route path = "" element={<ProductGrid products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />} >  
-                <Route path = "" element={<ProductCard />} />
-              </Route>
-            </Route>
+            <Route path = "/" element={<Home products={products} 
+            handleAddItemToCart={handleAddItemToCart} 
+            handleRemoveItemFromCart={handleRemoveItemFromCart}
+            searchInput={searchInput} setSearchInput={setSearchInput} />} />
 
-            <Route path = "/products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart} />}>
-              <Route path = "" element={<ProductView />} >
-                <Route path = "" element={<ProductCard />} />
-              </Route>
-            </Route>
+            <Route path = "/products/:productId" element={<ProductDetail
+            products={products}
+            handleAddItemToCart={handleAddItemToCart} 
+            handleRemoveItemFromCart={handleRemoveItemFromCart} />}/>
             
             <Route path="*" element={<NotFound />}></Route>
             
-            {/* <Route path="/" element={<Footer />} /> */}
           </Routes>
-          <Footer />
         </main>
       </BrowserRouter>
     </div>
