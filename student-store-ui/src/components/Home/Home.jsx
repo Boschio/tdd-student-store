@@ -33,7 +33,6 @@ export default function Home(props) {
 
   return (
     <div className="home">
-      <Hero />
       <SearchBar setSearchInput={props.setSearchInput} handleOnSearchChange={handleOnSearchChange} handleCategory={handleCategory} />
       <ProductGrid products={props.searchInput.length === 0 && currentCategory===false ? products : currentProducts} 
       handleAddItemToCart={props.handleAddItemToCart} 

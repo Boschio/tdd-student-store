@@ -21,11 +21,13 @@ export default function App() {
   const [error, setError] = useState("")
   const [isOpen, setIsOpen] = useState(false) // Boolean value for if Sidebar is open or closed
   const [shoppingCart, setShoppingCart] = useState([]) // state for active user's shopping cart items and quantity of each
+  const [isProductAdded, setIsProductAdded] = useState(false)
+  const [productCounter, setProductCounter] = useState(1)
   const [checkoutForm, setCheckoutForm] = useState([]) // user's info sent to API when checking out
   const [searchInput, setSearchInput] = useState("")
 
   function handleOnToggle () {
-    if (isOpen) {
+    if (isOpen === true) {
       setIsOpen(false)
     } else {
       setIsOpen(true)
@@ -33,15 +35,25 @@ export default function App() {
   }
 
   function handleAddItemToCart (productId) {
-    //FIXME keeps creating infinite loop
-    if (shoppingCart.includes(productId)) {
-      shoppingCart[i].quantity += 1
-    } else {
+    setProductCounter(0)
+    if (shoppingCart.length > 0) {
+      for (let i=0;i<shoppingCart.length;i++) {
+        if (productId === shoppingCart[i].id) {
+          shoppingCart[i].quantity += 1
+          // setIsProductAdded(true)  
+          } else {
+          setProductCounter(productCounter + 1)
+        }
+      }
+    }
+    if (shoppingCart.length == productCounter) {
+      console.log("Counter",productCounter)
       const newCartItem = {
         id: productId,
         quantity: 1,        
       }
       setShoppingCart(current => [...current, newCartItem])
+      setProductCounter(0)
     }
   }
 
@@ -63,7 +75,7 @@ export default function App() {
       try {
         const response = await axios.get(`https://codepath-store-api.herokuapp.com/store?test=${test}`)
         const products = response.data.products
-        console.log(products)
+        // console.log(products)
         setProducts(products)
       } catch(error) {
         setError("Unable to retrieve data")
@@ -76,13 +88,15 @@ export default function App() {
   return (
     <div className="app">
       <BrowserRouter>
+      <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
+
         <main>
           {/* YOUR CODE HERE! */}
 
           {/* <input onChange={(event) => (setTest(event.target.value))} /> */}
 
           <Navbar />
-          <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
+          <Hero />
           <Routes>
           
             <Route path = "/" element={<Home products={products} 

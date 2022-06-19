@@ -4,12 +4,17 @@
     justify-content: space-evenly;
     color: white;
     background-color: #00c385;
-    width: 50vw;
-    font-size: larger;
+    max-width: 1100px;
+    min-width: 600px;
+    height: 350px;
+    font-size: 130%;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .intro {
-    width: 30vw;
+    width: 100%;
 }
 .hero-img {
-    width: 150px;
+    width: 120px;
+    margin: 50px;
 }

@@ -1,5 +1,6 @@
 import * as React from "react"
 import ProductCard from "../ProductCard/ProductCard"
+import "./ProductView.css"
 
 //FIXME It should display an h1 element with the className of product-id that contains the text: Product # followed by the productId prop
 

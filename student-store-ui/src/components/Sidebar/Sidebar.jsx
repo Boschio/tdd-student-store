@@ -10,8 +10,9 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm"
 
 export default function Sidebar(props) {
   return (
-    <section className="sidebar">
-      <button className="toggle-button" onClick={useEffect(() => {props.handleOnToggle()} ,[])}>Toggle</button>
+    // <section className="sidebar">
+    <section className={props.isOpen ? "sidebar open" : "sidebar closed"}>
+      <button className="toggle-button" onClick={props.handleOnToggle}>Toggle</button>
       <ShoppingCart isOpen={props.isOpen} products={props.products} shoppingCart={props.shoppingCart} />
       <CheckoutForm isOpen={props.isOpen} shoppingCart={props.shoppingCart} checkoutForm={props.checkoutForm} handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm} />
     </section>

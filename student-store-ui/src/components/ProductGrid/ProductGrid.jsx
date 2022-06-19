@@ -13,9 +13,9 @@ export default function ProductGrid(props) {
     <div className="product-grid">
       <div className="grid-header"><h2>Best Selling Products</h2></div>
       <div className="grid-container"> 
-        {products.map((product) => (
+        {products.map((product, index) => (
         // <p key={index}>{product.name}</p>
-        <ProductCard key={product.id} 
+        <ProductCard key={index} 
         showDescription={false} 
         product={product} productId={product.id} 
         quantity={props.quantity} 
