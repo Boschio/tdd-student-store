@@ -36,12 +36,14 @@ export default function ProductDetail(props) {
           getProduct()  
     },[])
 
+
+
     console.log("PROD",product)
 
     return (
       <div className="product-detail">
         {/* {prodView} */}
-        <ProductView product={product} productId={productId} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemFromCart={props.handleRemoveItemFromCart} />
+        <ProductView product={product} shoppingCart={props.shoppingCart} quantity={props.quantity} productId={productId} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemFromCart={props.handleRemoveItemFromCart} />
       </div>
     )
   }

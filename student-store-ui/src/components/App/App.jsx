@@ -4,15 +4,10 @@ import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
 import "./App.css"
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
-import Hero from "../Hero/Hero"
-import ProductGrid from "../ProductGrid/ProductGrid"
 import { useState, useEffect } from "react"
 import axios from "axios";
 import ProductDetail from "../ProductDetail/ProductDetail"
 import NotFound from "../NotFound/NotFound"
-import ProductCard from "../ProductCard/ProductCard"
-import ProductView from "../ProductView/ProductView"
-
 
 export default function App() {
   const [test, setTest] = useState("")
@@ -21,10 +16,7 @@ export default function App() {
   const [error, setError] = useState("")
   const [isOpen, setIsOpen] = useState(false) // Boolean value for if Sidebar is open or closed
   const [shoppingCart, setShoppingCart] = useState([]) // state for active user's shopping cart items and quantity of each
-  const [isProductAdded, setIsProductAdded] = useState(false)
-  const [productCounter, setProductCounter] = useState(1)
   const [checkoutForm, setCheckoutForm] = useState([]) // user's info sent to API when checking out
-  const [searchInput, setSearchInput] = useState("")
 
   function handleOnToggle () {
     if (isOpen === true) {
@@ -35,30 +27,53 @@ export default function App() {
   }
 
   function handleAddItemToCart (productId) {
-    setProductCounter(0)
+    let productAdded = false
     if (shoppingCart.length > 0) {
       for (let i=0;i<shoppingCart.length;i++) {
-        if (productId === shoppingCart[i].id) {
-          shoppingCart[i].quantity += 1
-          // setIsProductAdded(true)  
-          } else {
-          setProductCounter(productCounter + 1)
+        if (productId === shoppingCart[i].itemId) {
+          let copyCart = [...shoppingCart]
+          copyCart[i]= {
+            ...copyCart[i],
+            quantity: copyCart[i].quantity+1
+          }
+          setShoppingCart(copyCart)
+          productAdded = true
         }
       }
-    }
-    if (shoppingCart.length == productCounter) {
-      console.log("Counter",productCounter)
+    } 
+    if (productAdded === false) {
       const newCartItem = {
-        id: productId,
+        itemId: productId,
         quantity: 1,        
       }
       setShoppingCart(current => [...current, newCartItem])
-      setProductCounter(0)
     }
   }
 
   function handleRemoveItemFromCart (productId) {
-    //FIXME
+    if (shoppingCart.length > 0) {
+      for (let i=0;i<shoppingCart.length;i++) {
+        if (productId === shoppingCart[i].itemId && shoppingCart[i].quantity > 1) {
+          let copyCart = [...shoppingCart]
+          copyCart[i]= {
+            ...copyCart[i],
+            quantity: copyCart[i].quantity-1
+          }
+          setShoppingCart(copyCart)
+        } else if (productId === shoppingCart[i].itemId && shoppingCart[i].quantity === 1) {
+          let copyCart = [...shoppingCart]
+          copyCart[i]= {
+            ...copyCart[i],
+            quantity: copyCart[i].quantity-1
+          }
+          let itemToRemove = copyCart.find(({ itemId }) => itemId === productId)
+          const newCart = copyCart.filter(item => {
+            return item !== itemToRemove
+          })
+          setShoppingCart(newCart)
+        }
+      }
+    } 
   }
 
   function handleOnCheckoutFormChange (name, value) {
@@ -96,16 +111,17 @@ export default function App() {
           {/* <input onChange={(event) => (setTest(event.target.value))} /> */}
 
           <Navbar />
-          <Hero />
           <Routes>
           
             <Route path = "/" element={<Home products={products} 
+            shoppingCart={shoppingCart}
             handleAddItemToCart={handleAddItemToCart} 
-            handleRemoveItemFromCart={handleRemoveItemFromCart}
-            searchInput={searchInput} setSearchInput={setSearchInput} />} />
+            handleRemoveItemFromCart={handleRemoveItemFromCart} />} />
 
+              
             <Route path = "/products/:productId" element={<ProductDetail
-            products={products}
+            // products={products} {/* FIXME ProductDetail may not need products passed in */}
+            shoppingCart={shoppingCart}
             handleAddItemToCart={handleAddItemToCart} 
             handleRemoveItemFromCart={handleRemoveItemFromCart} />}/>
             

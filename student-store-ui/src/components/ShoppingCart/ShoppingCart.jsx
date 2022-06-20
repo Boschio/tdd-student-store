@@ -33,7 +33,7 @@ export default function ShoppingCart(props) {
 
   return (
     <div className="cart-table">
-      <p>Name: {products[product.id-1].name}</p>
+      <p>Name: {products[product.itemId-1].name}</p>
       <p>Quantity: {product.quantity}</p>
     </div>
   )

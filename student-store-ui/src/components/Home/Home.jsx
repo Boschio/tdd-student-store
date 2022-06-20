@@ -1,6 +1,6 @@
 import * as React from "react"
-import Hero from "../Hero/Hero"
 import ProductGrid from "../ProductGrid/ProductGrid"
+import Hero from "../Hero/Hero"
 import SearchBar from "../SearchBar/SearchBar"
 import About from "../About/About"
 import ContactUs from "../ContactUs/ContactUs"
@@ -9,32 +9,37 @@ import "./Home.css"
 import { useState, useEffect } from "react"
 
 export default function Home(props) {
-  const [currentProducts, setCurrentProducts] = useState([])
-  const [currentCategory, setCurrentCategory] = useState(false)  
+  const [currentCategory, setCurrentCategory] = useState("")
+  const [searchInput, setSearchInput] = useState("")
   const { products } = props
 
+  
+  const currentProducts = products.filter(product => {
+    return (product.name.toLowerCase().includes(searchInput.toLowerCase()))
+  }).filter(product => {
+    if(currentCategory === "") {
+      return true
+    }
+    return (product.category === currentCategory)
+  })
+
+  // console.log("RENDER: ", searchInput, currentProducts)
   let handleOnSearchChange = (event) => {
-    props.setSearchInput(event.target.value)
-    setCurrentProducts(products.filter(product => {
-    return (product.name.toLowerCase().includes(props.searchInput.toLowerCase()))
-    }))
+    // console.log("EVENT WITHIN SEARCH CHANGE: ",event.target.value)
+    setSearchInput(event.target.value)
   }
 
   let handleCategory = (category) => {
-    setCurrentCategory(true)
-    if (category === "") {
-      setCurrentProducts(products)
-    } else {
-      setCurrentProducts(products.filter(product => {
-        console.log(category)
-      return (product.category === category)
-      }))
-  }}
+    setCurrentCategory(category)
+  }
 
   return (
     <div className="home">
-      <SearchBar setSearchInput={props.setSearchInput} handleOnSearchChange={handleOnSearchChange} handleCategory={handleCategory} />
-      <ProductGrid products={props.searchInput.length === 0 && currentCategory===false ? products : currentProducts} 
+      <Hero />
+      <SearchBar setSearchInput={props.setSearchInput} 
+      handleOnSearchChange={handleOnSearchChange} handleCategory={handleCategory} />
+      <ProductGrid products={currentProducts}
+      shoppingCart={props.shoppingCart} 
       handleAddItemToCart={props.handleAddItemToCart} 
       handleRemoveItemFromCart={props.handleRemoveItemFromCart}/>
       <About />
