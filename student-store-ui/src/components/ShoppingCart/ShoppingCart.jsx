@@ -12,9 +12,6 @@ export default function ShoppingCart(props) {
             //FIXME need to make sure shopping cart is passed as an array with itemId and quantity. Need to convert ID to name of product
             <CartTable key={index} products={props.products} shoppingCart={props.shoppingCart} product={product} />
             
-            
-            
-          
           ))}
         </div>
         <div className="cart-product-quantity">
