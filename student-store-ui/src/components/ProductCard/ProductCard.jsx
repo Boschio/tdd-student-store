@@ -13,7 +13,7 @@ export default function ProductCard(props) {
       <div className="details-container">
         <div className="product-details">
           <div className="product-name">{product.name}</div>
-          <div className="product-price">${product.price ? product.price.toFixed(2) : product.price}</div>
+          <div className="product-price">${product.price?.toFixed(2)}</div>
           <div className="product-description" style={{display: props.showDescription===true ? "block" : "none" }} >{product.description}</div>        
         </div>
         <div className="buttons-container">
