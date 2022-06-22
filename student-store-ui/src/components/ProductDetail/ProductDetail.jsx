@@ -12,6 +12,7 @@ import { render } from "react-dom"
 
 export default function ProductDetail(props) {
     const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(true);
 
     let { productId } = useParams()
     // console.log("PROD ID",productId)
@@ -21,13 +22,17 @@ export default function ProductDetail(props) {
         
             try {
               console.log('mounted')
+              setTimeout(() => {
+                setLoading(false)
+              }, 100)
               const response = await axios.get(`https://codepath-store-api.herokuapp.com/store/${productId}`)
+
               console.log('responded')
               const productData = response.data
-              console.log("PRODDATA",productData)
+
               setProduct(productData.product)
               console.log("DATA SET")
-              // prodView = <ProductView product={product} productId={productId} quantity={props.shoppingCart.quantity} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemFromCart={props.handleRemoveItemFromCart} />
+
             } catch(error) {
               console.log("ERROR")
               return <NotFound />
@@ -36,14 +41,11 @@ export default function ProductDetail(props) {
           getProduct()  
     },[])
 
-
-
     console.log("PROD",product)
 
     return (
       <div className="product-detail">
-        {/* {prodView} */}
-        <ProductView product={product} shoppingCart={props.shoppingCart} quantity={props.quantity} productId={productId} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemFromCart={props.handleRemoveItemFromCart} />
+        {loading ? <h1 className="loading">Loading...</h1> : <ProductView product={product} shoppingCart={props.shoppingCart} quantity={props.shoppingCart.quantity} productId={productId} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemFromCart={props.handleRemoveItemFromCart} /> }
       </div>
     )
   }
