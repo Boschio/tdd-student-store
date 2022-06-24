@@ -8,7 +8,7 @@ export default function ProductGrid(props) {
   const { products } = props
   const { shoppingCart } = props
     // console.log("NAME: ",props.products)
-    console.log("STUFF",props)
+    // console.log("STUFF",props)
     
     return (
       

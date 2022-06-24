@@ -16,7 +16,8 @@ export default function App() {
   const [error, setError] = useState("")
   const [isOpen, setIsOpen] = useState(false) // Boolean value for if Sidebar is open or closed
   const [shoppingCart, setShoppingCart] = useState([]) // state for active user's shopping cart items and quantity of each
-  const [checkoutForm, setCheckoutForm] = useState([]) // user's info sent to API when checking out
+  const [checkoutForm, setCheckoutForm] = useState({name: "",email: "",}) // user's info sent to API when checking out
+  const [purchases, setPurchases] = useState([])
 
   function handleOnToggle () {
     if (isOpen === true) {
@@ -77,28 +78,36 @@ export default function App() {
   }
 
   function handleOnCheckoutFormChange (name, value) {
-    //FIXME
+    setCheckoutForm(current => ({...current,[name]:value}))  
   }
 
-  function handleOnSubmitCheckoutForm () {
-    //FIXME
+  const handleOnSubmitCheckoutForm = async () => {
+    try {
+      const res = await axios.post('http://localhost:3001/store', {purchases: {user :checkoutForm, shoppingCart: shoppingCart}})
+      console.log("DATA",res.data)
+      if(res.data.purchases) {
+        setPurchases(current => [current, ...response.data.purchases])
+      }      
+    }catch(err) {
+        console.log({err})
+    }
   }
 
   useEffect(() => {
     const getProducts = async () => {
       
       try {
-        const response = await axios.get(`https://codepath-store-api.herokuapp.com/store?test=${test}`)
-        const products = response.data.products
-        // console.log(products)
+        const response = await axios.get('http://localhost:3001/store')
+        // const response = await axios.get(`https://codepath-store-api.herokuapp.com/store`)
+        const products = response?.data?.products
         setProducts(products)
       } catch(error) {
         setError("Unable to retrieve data")
-        console.log(error)
+        console.log({error})
       }
     }
     getProducts()   
-  }, [test])
+  }, [])
 
   return (
     <div className="app">
@@ -106,9 +115,6 @@ export default function App() {
       <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
 
         <main>
-          {/* YOUR CODE HERE! */}
-
-          {/* <input onChange={(event) => (setTest(event.target.value))} /> */}
 
           <Navbar />
           <Routes>
@@ -120,7 +126,6 @@ export default function App() {
 
               
             <Route path = "/products/:productId" element={<ProductDetail
-            // products={products} {/* FIXME ProductDetail may not need products passed in */}
             shoppingCart={shoppingCart}
             handleAddItemToCart={handleAddItemToCart} 
             handleRemoveItemFromCart={handleRemoveItemFromCart} />}/>

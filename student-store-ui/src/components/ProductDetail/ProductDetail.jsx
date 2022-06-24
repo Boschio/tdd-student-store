@@ -15,7 +15,6 @@ export default function ProductDetail(props) {
     const [loading, setLoading] = useState(true);
 
     let { productId } = useParams()
-    // console.log("PROD ID",productId)
     let prodView
     useEffect(() => {
         const getProduct = async () => {
@@ -31,7 +30,6 @@ export default function ProductDetail(props) {
               const productData = response.data
 
               setProduct(productData.product)
-              console.log("DATA SET")
 
             } catch(error) {
               console.log("ERROR")
@@ -41,7 +39,7 @@ export default function ProductDetail(props) {
           getProduct()  
     },[])
 
-    console.log("PROD",product)
+    // console.log("PROD",product)
 
     return (
       <div className="product-detail">

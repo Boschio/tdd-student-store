@@ -6,7 +6,7 @@ export default function ProductCard(props) {
   const { product } = props
 
   let item = props.shoppingCart.find(({ itemId }) => itemId===product.id)
-  console.log("ITEM",item)
+  // console.log("ITEM",item)
     return (
     <div className="product-card">
       <div className="media"><Link to={`/products/${product.id}`} className="product-image"><img src={product.image}/></Link></div>
