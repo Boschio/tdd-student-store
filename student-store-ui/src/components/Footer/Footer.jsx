@@ -6,11 +6,11 @@ export default function Footer() {
     // <div className="footer">
     //   <p>Footer Placeholder</p>
     // </div>
-  <footer class="footer">
-    <div class="content">
-      <div class="top">
-        <div class="links">
-          <div class="link-column">
+  <footer className="footer">
+    <div className="content">
+      <div className="top">
+        <div className="links">
+          <div className="link-column">
             <h4>Categories</h4>
             <ul>
               <li>All Categories</li>
@@ -20,7 +20,7 @@ export default function Footer() {
               <li>Tech</li>
             </ul>
           </div>
-          <div class="link-column">
+          <div className="link-column">
             <h4>Company</h4>
             <ul>
               <li>About Us</li>
@@ -31,7 +31,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div class="link-column">
+          <div className="link-column">
             <h4>Support</h4>
             <ul>
               <li>Contact Us</li>
@@ -42,7 +42,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div class="link-column">
+          <div className="link-column">
             <h4>Account</h4>
             <ul>
               <li>Login</li>
@@ -51,7 +51,7 @@ export default function Footer() {
               <li>My Orders</li>
             </ul>
           </div>
-          <div class="link-column">
+          <div className="link-column">
             <h4>Socials</h4>
             <ul>
               <li>Facebook</li>

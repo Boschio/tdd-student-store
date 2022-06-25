@@ -16,7 +16,7 @@ export default function App() {
   const [error, setError] = useState("")
   const [isOpen, setIsOpen] = useState(false) // Boolean value for if Sidebar is open or closed
   const [shoppingCart, setShoppingCart] = useState([]) // state for active user's shopping cart items and quantity of each
-  const [checkoutForm, setCheckoutForm] = useState({name: "",email: "",}) // user's info sent to API when checking out
+  const [checkoutForm, setCheckoutForm] = useState({name: undefined,email: undefined,}) // user's info sent to API when checking out
   const [purchases, setPurchases] = useState([])
 
   function handleOnToggle () {
@@ -83,14 +83,17 @@ export default function App() {
 
   const handleOnSubmitCheckoutForm = async () => {
     try {
-      const res = await axios.post('http://localhost:3001/store', {purchases: {user :checkoutForm, shoppingCart: shoppingCart}})
-      console.log("DATA",res.data)
-      if(res.data.purchases) {
-        setPurchases(current => [current, ...response.data.purchases])
+      // const res = await axios.post('http://localhost:3001/store', {purchases: {user :checkoutForm, shoppingCart: shoppingCart}})
+      const res = await axios.post('http://localhost:3001/store', {user :checkoutForm, shoppingCart: shoppingCart})
+      if(res.data.purchase) {
+        setPurchases(current => [...current,res.data.purchase])
+        setShoppingCart([])
       }      
     }catch(err) {
         console.log({err})
     }
+    setShoppingCart([])
+    alert("\nSuccess! Order confirmed!\n\nPlease check the sidebar or your email for details of this order.")
   }
 
   useEffect(() => {
@@ -112,7 +115,10 @@ export default function App() {
   return (
     <div className="app">
       <BrowserRouter>
-      <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
+      <Sidebar isOpen={isOpen} shoppingCart={shoppingCart} products={products}
+       checkoutForm={checkoutForm} setCheckoutForm={setCheckoutForm}
+        handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+        handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} handleOnToggle={handleOnToggle} />
 
         <main>
 

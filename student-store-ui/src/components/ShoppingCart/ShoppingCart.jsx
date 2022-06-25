@@ -28,14 +28,12 @@ export default function ShoppingCart(props) {
                   <td className="cart-product-quantity"><div>{product.quantity}</div></td>
                   <td className="cart-unit-price"><div>${(props.products[product.itemId-1].price)?.toFixed(2)}</div></td>
                   <td className="cart-unit-total"><div>${(props.products[product.itemId-1].price * product.quantity)?.toFixed(2)}</div></td>
-                  <td></td>
-
                 </tr>
               </tbody>
             )})}
           
         <tfoot>
-        <p></p>
+        
           <tr>
             <td></td>
             <td></td>
@@ -52,7 +50,7 @@ export default function ShoppingCart(props) {
             <td></td>
             <td></td>
             <td className="tf">Total: </td>
-            <td className="total-price">${(subTotal * .0875).toFixed(2)}</td>
+            <td className="total-price">${(subTotal * 1.0875).toFixed(2)}</td>
           </tr>
         </tfoot>
         </table>
@@ -62,33 +60,3 @@ export default function ShoppingCart(props) {
 
   )
 }
-
-//FIXME need to make sure shopping cart is passed as an array with itemId and quantity. Need to convert ID to name of product
-// <CartTable key={index} products={props.products} shoppingCart={props.shoppingCart} product={product} />
-//  export function CartTable(props) {
-//   let { product } = props
-//   let { products } = props
-//   let { shoppingCart } = props
-
-//     console.log("PROD",product)
-
-//   return (
-//     <div className="cart-table">
-//       <table>
-//         <tr>
-//           <th>Name</th>
-//           <th>Quantity</th>
-//           <th>Price</th>
-//         </tr>
-//         <tr>
-//           <td>{products[product.itemId-1].name}</td>
-//           <td>{product.quantity}</td>
-//           <td>${(products[product.itemId-1].price * product.quantity)?.toFixed(2)}</td>
-//         </tr>
-//         </table>
-//       {/* <p>Name: {products[product.itemId-1].name}</p>
-//       <p>Quantity: {product.quantity}</p>
-//       <p>Price: ${(products[product.itemId-1].price * product.quantity)?.toFixed(2)}</p> */}
-//     </div>
-//   )
-//  }

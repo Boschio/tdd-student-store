@@ -8,7 +8,7 @@ class Store {
         return products
     }
 
-    static async fetchProductById(productId) {
+    static fetchProductById(productId) {
         const product = storage
             .get("products")
             .find({ id: Number(productId) })
@@ -18,12 +18,25 @@ class Store {
     }
 
     static async createPurchase(purchase) {
-        // if (!purchase.id) {
-        //     throw new BadRequestError("Purchase order")
-        // }
+        if (!purchase) {
+            throw new BadRequestError("Purchase order")
+        }
 
-        const purchasedAt = new Date().toISOString()
-        const newPurchase = { ...purchase, purchasedAt }
+        const createdAt = new Date().toISOString()
+        const id = storage.get("purchases").value().length+1
+
+        const products = storage.get("products")
+        let total = 0
+        purchase.shoppingCart.forEach(cartItem => {
+            let matchingProd = this.fetchProductById(cartItem.itemId)
+            console.log("MATCHING?", matchingProd)
+          total += (matchingProd.price * cartItem.quantity)
+        })
+        total *= 1.0875
+
+        const newPurchase = { id, ...purchase.user, order: purchase.shoppingCart, total: total.toFixed(2) , createdAt }
+
+        console.log("PURCHASE INFO", newPurchase)
 
         storage.get("purchases").push(newPurchase).write()
         

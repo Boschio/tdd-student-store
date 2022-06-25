@@ -29,10 +29,12 @@ router.get('/store/:productId', async (req, res, next) => {
 
 router.post('/store', async (req, res, next) => {
     try {
-        const newPurchase = req.body.purchases
+        const newPurchase = req.body
+
         if(!newPurchase) {
             return next(new BadRequestError("No order found in request"))
         }
+
         const purchase = await Store.createPurchase(newPurchase)
         res.status(201).json({purchase})
     } catch(err) {

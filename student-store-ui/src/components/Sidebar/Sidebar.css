@@ -18,11 +18,17 @@
 }
 
 .closed {
-    width: 100px;
+    width: 50px;
     overflow-y: hidden
 }
 
 .open {
-    /* width: 50%; */
     width: 550px;
+}
+
+.toggle-button {
+    background-color: black;
+    border: none;
+    margin: 10px;
+    
 }

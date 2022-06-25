@@ -147,17 +147,428 @@
   ],
   "purchases": [
     {
-      "user": {
-        "name": "James A. Bosch",
-        "email": "james.bosch.site@codepath.org"
-      },
-      "shoppingCart": [
+      "id": 1,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": "3.25",
+      "createdAt": "2022-06-24T20:21:53.178Z"
+    },
+    {
+      "id": 2,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 2
+        },
+        {
+          "itemId": 5,
+          "quantity": 2
+        }
+      ],
+      "total": "19.57",
+      "createdAt": "2022-06-24T21:02:53.306Z"
+    },
+    {
+      "id": 3,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": "3.25",
+      "createdAt": "2022-06-25T00:00:06.360Z"
+    },
+    {
+      "id": 4,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 5
+        },
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "17.89",
+      "createdAt": "2022-06-25T00:04:41.395Z"
+    },
+    {
+      "id": 5,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:19:45.057Z"
+    },
+    {
+      "id": 6,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 4,
+          "quantity": 3
+        }
+      ],
+      "total": "10.60",
+      "createdAt": "2022-06-25T00:20:28.694Z"
+    },
+    {
+      "id": 7,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:21:46.693Z"
+    },
+    {
+      "id": 8,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:23:07.195Z"
+    },
+    {
+      "id": 9,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:27:29.186Z"
+    },
+    {
+      "id": 10,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 10,
+          "quantity": 1
+        }
+      ],
+      "total": "38.05",
+      "createdAt": "2022-06-25T00:28:15.056Z"
+    },
+    {
+      "id": 11,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        },
+        {
+          "itemId": 4,
+          "quantity": 1
+        }
+      ],
+      "total": "6.79",
+      "createdAt": "2022-06-25T00:28:29.269Z"
+    },
+    {
+      "id": 12,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": "3.25",
+      "createdAt": "2022-06-25T00:29:42.557Z"
+    },
+    {
+      "id": 13,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 10,
+          "quantity": 1
+        }
+      ],
+      "total": "38.05",
+      "createdAt": "2022-06-25T00:30:01.509Z"
+    },
+    {
+      "id": 14,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 5,
+          "quantity": 1
+        }
+      ],
+      "total": "8.16",
+      "createdAt": "2022-06-25T00:36:26.702Z"
+    },
+    {
+      "id": 15,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [],
+      "total": "0.00",
+      "createdAt": "2022-06-25T00:36:29.109Z"
+    },
+    {
+      "id": 16,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 5,
+          "quantity": 1
+        }
+      ],
+      "total": "8.16",
+      "createdAt": "2022-06-25T00:36:40.124Z"
+    },
+    {
+      "id": 17,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": "3.25",
+      "createdAt": "2022-06-25T00:37:30.280Z"
+    },
+    {
+      "id": 18,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [],
+      "total": "0.00",
+      "createdAt": "2022-06-25T00:37:38.632Z"
+    },
+    {
+      "id": 19,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 8,
+          "quantity": 2
+        }
+      ],
+      "total": "43.48",
+      "createdAt": "2022-06-25T00:40:01.841Z"
+    },
+    {
+      "id": 20,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [],
+      "total": "0.00",
+      "createdAt": "2022-06-25T00:41:36.169Z"
+    },
+    {
+      "0": {},
+      "id": 21,
+      "order": [],
+      "total": "0.00",
+      "createdAt": "2022-06-25T00:41:40.873Z"
+    },
+    {
+      "0": {},
+      "id": 22,
+      "order": [
+        {
+          "itemId": 5,
+          "quantity": 1
+        }
+      ],
+      "total": "8.16",
+      "createdAt": "2022-06-25T00:41:44.235Z"
+    },
+    {
+      "id": 23,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 8,
+          "quantity": 1
+        }
+      ],
+      "total": "21.74",
+      "createdAt": "2022-06-25T00:43:04.015Z"
+    },
+    {
+      "0": {},
+      "id": 24,
+      "order": [],
+      "total": "0.00",
+      "createdAt": "2022-06-25T00:43:39.776Z"
+    },
+    {
+      "id": 25,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:48:07.695Z"
+    },
+    {
+      "id": 26,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:49:24.388Z"
+    },
+    {
+      "id": 27,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 2
+        }
+      ],
+      "total": "3.26",
+      "createdAt": "2022-06-25T00:49:42.312Z"
+    },
+    {
+      "id": 28,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        }
+      ],
+      "total": "3.25",
+      "createdAt": "2022-06-25T00:49:59.884Z"
+    },
+    {
+      "id": 29,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "1.63",
+      "createdAt": "2022-06-25T00:50:21.237Z"
+    },
+    {
+      "id": 30,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 4,
+          "quantity": 1
+        }
+      ],
+      "total": "3.53",
+      "createdAt": "2022-06-25T00:51:13.677Z"
+    },
+    {
+      "id": 31,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        },
+        {
+          "itemId": 9,
+          "quantity": 1
+        },
+        {
+          "itemId": 10,
+          "quantity": 1
+        },
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "48.36",
+      "createdAt": "2022-06-25T00:52:36.475Z"
+    },
+    {
+      "id": 32,
+      "name": "James A. Bosch",
+      "email": "james.bosch.site@codepath.org",
+      "order": [
+        {
+          "itemId": 7,
+          "quantity": 1
+        },
+        {
+          "itemId": 12,
+          "quantity": 1
+        },
+        {
+          "itemId": 11,
+          "quantity": 1
+        },
         {
           "itemId": 1,
           "quantity": 1
         }
       ],
-      "purchasedAt": "2022-06-24T14:20:04.810Z"
+      "total": "658.99",
+      "createdAt": "2022-06-25T00:56:04.944Z"
     }
   ]
 }

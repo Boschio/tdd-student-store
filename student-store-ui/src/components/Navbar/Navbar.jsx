@@ -8,11 +8,11 @@ export default function Navbar() {
       <div className="nav-content">
         <Logo />
         <div className="socials">
-          <a href="#" class="fa fa-facebook"></a>
-          <a href="#" class="fa fa-twitter"></a>
-          <a href="#" class="fa fa-linkedin"></a>
-          <a href="#" class="fa fa-youtube"></a>
-          <a href="#" class="fa fa-instagram"></a>
+          <a href="#" className="fa fa-facebook"></a>
+          <a href="#" className="fa fa-twitter"></a>
+          <a href="#" className="fa fa-linkedin"></a>
+          <a href="#" className="fa fa-youtube"></a>
+          <a href="#" className="fa fa-instagram"></a>
         </div>
         <div className="nav-links">
           <ul className="links">
@@ -20,6 +20,7 @@ export default function Navbar() {
             <a href="#" className="list-link">About Us</a>
             <a href="#" className="list-link">Contact Us</a>
             <a href="#" className="list-link">Buy Now</a>
+            <a href='#' className="list-link">Order History</a>
           </ul>
         </div>
       </div>

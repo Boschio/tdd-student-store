@@ -12,9 +12,9 @@ export default function Sidebar(props) {
   return (
     // <section className="sidebar">
     <section className={props.isOpen ? "sidebar open" : "sidebar closed"}>
-      <button className="toggle-button" onClick={props.handleOnToggle}>Cart</button>
+      <button className="toggle-button" onClick={props.handleOnToggle}><i class="fa fa-bars"></i></button>
       <ShoppingCart isOpen={props.isOpen} products={props.products} shoppingCart={props.shoppingCart} />
-      <CheckoutForm isOpen={props.isOpen} shoppingCart={props.shoppingCart} checkoutForm={props.checkoutForm} handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm} />
+      <CheckoutForm isOpen={props.isOpen} shoppingCart={props.shoppingCart} checkoutForm={props.checkoutForm} setCheckoutForm={props.setCheckoutForm} handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm} />
     </section>
   )
 }

@@ -29,6 +29,16 @@ table {
 .quantity {
     align-self:center;
 }
+tfoot {
+    border-top: 1px solid black;
+    display: block;
+    text-align: right;
+}
 .tf {
+    font-weight: bold;
+}
+.notification {
+    margin-top: 10px;
+    color: white;
     font-weight: bold;
 }
